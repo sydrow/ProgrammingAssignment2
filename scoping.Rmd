@@ -1,0 +1,71 @@
+---
+---
+
+## Put comments here that give an overall description of what your
+## functions do
+
+## Write a short comment describing this function
+```{r}
+ulimit -s unlimited
+```
+
+```{r}
+#matrix functiont that caches inverse#
+makeCacheMatrix <- function(x = matrix()) {
+  inv <- NULL
+  set <- function(y) {
+    x <<- y
+    inv <<-NULL
+  }
+get<- function() x
+setInverse <- function(inverse) inv<<-inverse
+getInverse <- function() inv
+list (set = set, get = get, SetInverse = SetInverse, getInverse = getInverse)
+}
+```
+
+```{r}
+make
+```
+
+
+
+## Write a short comment describing this function
+
+#solves the inverse of the matrix from the cache
+
+cacheSolve <- function(x, ...) {
+        ## Return a matrix that is the inverse of 'x'
+        inv <- x$getInverse()
+        if(!is.null(inv)){
+        return(inv)
+}
+data <- x$get()
+inv <- solve(data)
+x$setInverse(inv)
+inv
+}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
